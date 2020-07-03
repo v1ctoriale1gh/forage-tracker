@@ -1,0 +1,2 @@
+class Expedition < ApplicationRecord
+end
