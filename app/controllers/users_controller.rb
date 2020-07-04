@@ -11,9 +11,9 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params(:name, :password, :email, :username))
         if @user.save
-          redirect_to: user_path(@user)
+          redirect_to user_path(@user)
         else
-            render: new
+            render :new
         end
     end
 
