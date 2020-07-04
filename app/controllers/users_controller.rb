@@ -10,11 +10,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params(:name, :password, :email, :username))
-        if @user.save
-          redirect_to user_path(@user)
-        else
-            render :new
-        end
+        render_or_redirect(:new)
     end
 
     def edit
@@ -28,17 +24,21 @@ class UsersController < ApplicationController
       def update
         @user = User.find_by(id: params[:id])
         @user.update(user_params(:username, :name, :password, :email))
-        if @user.save
-          redirect_to user_path(@user)
-        else
-          render :edit
-        end
+        render_or_redirect(:edit)
       end
 
     private
 
     def user_params(*args)
         params.require(:user).permit(*args)
+    end
+
+    def render_or_redirect(page)
+        if @user.save
+            redirect_to user_path(@user)
+          else
+            render page
+          end
     end
 
 end

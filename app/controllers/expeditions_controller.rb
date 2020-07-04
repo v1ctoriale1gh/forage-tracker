@@ -33,11 +33,11 @@ class ExpeditionsController < ApplicationController
         params.require(:expedition).permit(*args)
     end
 
-    def render_or_redirect(:page)
+    def render_or_redirect(page)
     if @expedition.save
         redirect_to Expedition_path(@expedition)
       else
-        render :page
+        render page
       end
     end
 end
