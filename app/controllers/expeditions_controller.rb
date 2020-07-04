@@ -41,7 +41,7 @@ class ExpeditionsController < ApplicationController
 
     def render_or_redirect(page)
     if @expedition.save
-        redirect_to Expedition_path(@expedition)
+        redirect_to expedition_path(@expedition)
       else
         render page
       end

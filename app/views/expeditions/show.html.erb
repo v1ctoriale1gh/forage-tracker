@@ -1,1 +1,4 @@
-<%= @expedition.location %><%= @location.date_and_time %>
+<h1><%= @expedition.location_name.capitalize %> <%= @expedition.date_and_time %></h1>
+<br>
+<p><%= @expedition.description %></p>
+<%= link_to "Edit", edit_expedition_path(@expedition)%>
