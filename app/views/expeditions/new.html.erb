@@ -1,1 +1,4 @@
-<%= render "form" %>
+<%= render partial: 'layouts/error', locals: {object: @expedition} %>
+<%= form_with scope: :expedition, url: user_expeditions_path(@user) do |f| %>
+<%= render partial: 'form', locals: {f: f} %>
+<% end%>

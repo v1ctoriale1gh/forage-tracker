@@ -1,19 +1,4 @@
-<% if @expedition.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(@expedition.errors.count, "error") %>
-      prohibited this from being saved:
-    </h2>
- 
-    <ul>
-    <% @expedition.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
 
-<%= form_for @expedition do |f| %>
   <%= f.label :location_name %>
   <%= f.text_field :location_name%>
   <%= f.label :date_and_time %>
@@ -25,4 +10,3 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
   <%= f.submit %>
-<% end %>
