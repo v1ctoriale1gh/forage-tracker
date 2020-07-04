@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def show
         @user = User.find_by(id: params[:id])
@@ -31,6 +32,10 @@ class UsersController < ApplicationController
 
     def user_params(*args)
         params.require(:user).permit(*args)
+    end
+
+    def set_user
+        @user = User.find(params[:id])
     end
 
     def render_or_redirect(page)

@@ -1,4 +1,5 @@
 class ExpeditionsController < ApplicationController
+    before_action :set_expedition, only: [:show, :edit, :update, :destroy]
 
     def show
         @expedition = Expedition.find_by(id: params[:id])
@@ -9,7 +10,8 @@ class ExpeditionsController < ApplicationController
     end
 
     def create
-        @expedition = Expedition.new(Expedition_params(:location_name, :date_and_time, :picture, :latitude, :longitude, :description, :user = [:name]))
+        @expedition = Expedition.new(Expedition_params(:location_name, :date_and_time, :picture, :latitude, :longitude, :description))
+        @expedition.user = User.find_by(params[:id])
         render_or_redirect(:new)
     end
 
@@ -31,6 +33,10 @@ class ExpeditionsController < ApplicationController
 
     def Expedition_params(*args)
         params.require(:expedition).permit(*args)
+    end
+
+    def set_expedition
+        @expedition = Expedition.find(params[:id])
     end
 
     def render_or_redirect(page)
