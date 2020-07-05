@@ -9,26 +9,28 @@
   <%= f.text_field :longitude %>
   <%= f.label :description %>
   <%= f.text_area :description %>
-  <%= f.submit %>
 
 
 <h3>Add items harvested:</h3>
-<br>
-<% 5.times do %>
-  <p>Select an existing Item</p>
-    <%= f.collection_select :item_id, user.items.all, :id, :name, prompt: true %>
-  <br>
-  <p>Or create a new Item</p>
-    <%= f.fields_for :item do |item_field| %>
-      <%= item_field.label :name %>
-      <%= item_field.text_field :name %>
-      <%= item_field.label :description %>
-      <%= item_field.text_field :description %>
-    <% end %>
-  <br>
-  <p>Amount Harvested:</p>
-    <%= f.fields_for :harvest do |harvest_field| %>
-      <%= harvest_field.text_field :amount %>
-    <% end %>
-  <br><br>
-<% end %>
+  <% harvests.each do |harvest| %>
+<div>
+<p>Amount Harvested:</p>
+       <%= text_field_tag "expedition[harvests][][amount]" %>
+         <p>Select an existing Item</p>
+         <select name="expedition[harvests][][item_id]" id="expedition_harvest_item_id"><option value="">Please select</option>
+         <% items.each do |item| %>
+           <option value=<%= "#{item.id}" %>><%= item.name %></option>
+          <% end %>
+          </select>
+         <br>
+        <p>Or create a new Item</p>
+        <%= label_tag "Item Name:" %>
+        <%= text_field_tag "expedition[harvests][][item][name]" %>
+          <%= label_tag "Item Description:" %>
+        <%= text_field_tag "expedition[harvests][][item][description]" %>
+        <br><br>
+  </div>
+  <% end %>
+
+
+<%= f.submit %>

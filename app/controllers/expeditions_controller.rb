@@ -11,22 +11,35 @@ class ExpeditionsController < ApplicationController
 
     def new
         @expedition = Expedition.new
-        @harvest = Harvest.new
-        @item = Item.new
+        @harvests =  [Harvest.new, Harvest.new, Harvest.new, Harvest.new, Harvest.new]
         @items = @user.items
+        @new_items = [Item.new, Item.new, Item.new, Item.new, Item.new]
     end
 
     def create
+        #byebug
         @expedition = Expedition.new(expedition_params(:location_name, :date_and_time, :picture, :latitude, :longitude, :description))
+        expedition_params(:harvests).each do |attributes|
+        @harvest = Harvest.new(attributes(:amount))
+          if item_id != ""
+              @harvest.item_id = attributes(:item_id)
+          else
+              @item = Item.new(attributes(:item), user_id: @user.id)
+              @harvest.item_id = @item.id
+          end
+        end
         @expedition.user = User.find_by(id: params[:user_id])
         render_or_redirect(:new)
     end
 
     def edit
+        @new_items = [Item.new, Item.new, Item.new, Item.new, Item.new]
+        @harvests = @expedition.harvests
+        @items = @user.items
     end
 
     def update
-       @expedition.update(expedition_params(:location_name, :date_and_time, :picture, :latitude, :longitude, :description))
+       @expedition.update(expedition_params)
        render_or_redirect(:edit)
     end
 
@@ -34,6 +47,7 @@ class ExpeditionsController < ApplicationController
 
     def expedition_params(*args)
         params.require(:expedition).permit(*args)
+        #(:location_name, :date_and_time, :picture, :latitude, :longitude, :description, harvests: [:amount, :item_id, item: [:name, :description]] )
     end
 
     def set_expedition
