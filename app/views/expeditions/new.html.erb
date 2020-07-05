@@ -3,5 +3,12 @@
 <%= render partial: 'layouts/error', locals: {object: @expedition} %>
 
 <%= form_with scope: :expedition, url: user_expeditions_path(@user) do |f| %>
-<%= render partial: 'form', locals: {f: f} %>
+<%= render partial: 'form', locals: {f: f, user: @user}%>
 <% end%>
+
+
+<h3>Add items harvested:</h3>
+<br>
+<% 5.times do %>
+<%=   %>
+<% end %>

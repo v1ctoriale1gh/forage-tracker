@@ -3,5 +3,5 @@
 <%= render partial: 'layouts/error', locals: {object: @expedition} %>
 
 <%= form_with scope: :expedition, url: user_expedition_path(@user), method: :patch do |f| %>
-<%= render partial: 'form', locals: {f: f} %>
+<%= render partial: 'form', locals: {f: f, user: @user} %>
 <% end%>
