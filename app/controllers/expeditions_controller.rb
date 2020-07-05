@@ -6,7 +6,7 @@ class ExpeditionsController < ApplicationController
     end
 
     def index
-        @expeditions = Expedition.all
+        redirect_to user_path(@user)
     end
 
     def new
