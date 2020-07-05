@@ -1,4 +1,4 @@
-
+<%= form_with model: expedition, url: url, local: true do |f| %>
   <%= f.label :location_name %>
   <%= f.text_field :location_name%>
   <%= f.label :date_and_time %>
@@ -10,27 +10,18 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
 
+<h3>Add A new Harvest!</h3>
 
-<h3>Add items harvested:</h3>
-  <% harvests.each do |harvest| %>
-<div>
-<p>Amount Harvested:</p>
-       <%= text_field_tag "expedition[harvests][][amount]" %>
-         <p>Select an existing Item</p>
-         <select name="expedition[harvests][][item_id]" id="expedition_harvest_item_id"><option value="">Please select</option>
-         <% items.each do |item| %>
-           <option value=<%= "#{item.id}" %>><%= item.name %></option>
-          <% end %>
-          </select>
-         <br>
-        <p>Or create a new Item</p>
-        <%= label_tag "Item Name:" %>
-        <%= text_field_tag "expedition[harvests][][item][name]" %>
-          <%= label_tag "Item Description:" %>
-        <%= text_field_tag "expedition[harvests][][item][description]" %>
-        <br><br>
-  </div>
-  <% end %>
+<%= f.fields_for :item, expedition.items do |s| %>
+<%= f.collection_select :item_id, user.items, :id, :name %>
+  <%= s.label :name %>
+  <%= s.text_field :name %>
+  <%= s.fields_for :harvest, expedition.harvests do |h| %>
+    <%= h.label :amount %>
+    <%= h.text_field :amount %>
+  <% end%>
+<% end %>
 
 
 <%= f.submit %>
+<% end %>

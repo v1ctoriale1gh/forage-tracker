@@ -11,9 +11,10 @@ class ExpeditionsController < ApplicationController
 
     def new
         @expedition = Expedition.new
-        @harvests =  [Harvest.new, Harvest.new, Harvest.new, Harvest.new, Harvest.new]
-        @items = @user.items
-        @new_items = [Item.new, Item.new, Item.new, Item.new, Item.new]
+          5.times do
+              @expedition.items.build
+              @expedition.harvests.build
+          end
     end
 
     def create

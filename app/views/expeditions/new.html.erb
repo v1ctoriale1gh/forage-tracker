@@ -1,7 +1,5 @@
 <h1>New Expedition</h1>
 <br>
-<%= render partial: 'layouts/error', locals: {object: @expedition} %>
+<%= render 'layouts/error', object: @expedition%>
+<%= render 'form', expedition: @expedition,  url: user_expeditions_path, user: @user  %>
 
-<%= form_with scope: :expedition, url: user_expeditions_path(@user) do |f| %>
-<%= render partial: 'form', locals: {f: f, user: @user, items: @user.items, new_items: @new_items, harvests: @harvests}%>
-<% end%>
