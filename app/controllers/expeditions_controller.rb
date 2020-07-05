@@ -13,10 +13,11 @@ class ExpeditionsController < ApplicationController
         @expedition = Expedition.new
         @harvest = Harvest.new
         @item = Item.new
+        @items = @user.items
     end
 
     def create
-        @expedition = Expedition.new(expedition_params(:location_name, :date_and_time, :picture, :latitude, :longitude, :description, ))
+        @expedition = Expedition.new(expedition_params(:location_name, :date_and_time, :picture, :latitude, :longitude, :description))
         @expedition.user = User.find_by(id: params[:user_id])
         render_or_redirect(:new)
     end
