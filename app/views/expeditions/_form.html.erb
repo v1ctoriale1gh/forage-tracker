@@ -11,17 +11,26 @@
   <%= f.text_area :description %>
 
 <h3>Add A new Harvest!</h3>
+<% 5.times do%>
+<div>
+<br>
+  <%= f.fields_for :harvests, expedition.harvests.build do |harvest_fields| %>
+  <%= harvest_fields.collection_select :item_id, Item.all, :id, :name, prompt: "Select an Existing Item" %>
+  <p> Or Create a new Item </p>
+  <%= harvest_fields.fields_for :item, expedition.items.build do |item_fields| %>
+    <%= item_fields.label :name %>
+    <%= item_fields.text_field :name %>
+    <%= item_fields.label :description%>
+    <%= item_fields.text_field :description %>
+    <% end%>
+    <br>
+      <%= harvest_fields.label "Amount Harvested" %>
+      <%= harvest_fields.text_field :amount %>
+  <% end %>
+  <br>
+  </div>
+<% end%>
 
-<%= f.fields_for :item, expedition.items do |s| %>
-<%= f.collection_select :item_id, user.items, :id, :name %>
-  <%= s.label :name %>
-  <%= s.text_field :name %>
-  <%= s.fields_for :harvest, expedition.harvests do |h| %>
-    <%= h.label :amount %>
-    <%= h.text_field :amount %>
-  <% end%>
-<% end %>
-
-
+<br>
 <%= f.submit %>
 <% end %>

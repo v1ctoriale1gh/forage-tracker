@@ -1,4 +1,9 @@
 <h1><%= @expedition.location_name.capitalize %> <%= @expedition.date_and_time %></h1>
 <br>
 <p><%= @expedition.description %></p>
+<h3>Harvests:</h3>
+<ol><% @expedition.harvests.each do |harvest| %>
+    <li><%= harvest.item.name %> <%= harvest.amount %></li>
+    <% end %>
+</ol>
 <%= link_to "Edit", edit_user_expedition_path(@user)%>

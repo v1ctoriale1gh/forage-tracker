@@ -1,5 +1,5 @@
 <h1>New Expedition</h1>
 <br>
 <%= render 'layouts/error', object: @expedition%>
-<%= render 'form', expedition: @expedition,  url: user_expeditions_path, user: @user  %>
+<%= render 'form', expedition: @expedition,  url: user_expeditions_path(@user)%>
 
