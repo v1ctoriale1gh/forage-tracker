@@ -11,7 +11,7 @@
   <%= f.text_area :description %>
 
 <h3>Add A new Harvest!</h3>
-<% 5.times do%>
+<% harvests.times do%>
 <div>
 <br>
   <%= f.fields_for :harvests, expedition.harvests.build do |harvest_fields| %>

@@ -25,9 +25,6 @@ class ExpeditionsController < ApplicationController
     end
 
     def edit
-        @new_items = [Item.new, Item.new, Item.new, Item.new, Item.new]
-        @harvests = @expedition.harvests
-        @items = @user.items
     end
 
     def update
