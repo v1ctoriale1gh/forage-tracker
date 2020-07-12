@@ -18,7 +18,6 @@ class ExpeditionsController < ApplicationController
     end
 
     def create
-        byebug
         @expedition = Expedition.new(expedition_params)
         @expedition.user = @user
         render_or_redirect(:new)
