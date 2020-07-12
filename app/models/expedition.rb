@@ -4,5 +4,14 @@ class Expedition < ApplicationRecord
     has_many :items, through: :harvests
     accepts_nested_attributes_for :harvests, reject_if: proc { |attributes| attributes['amount'].blank? }
 
-    validates :location_name, :description, presence: true
+    validates :location_name, :street, :street_number, :zipcode, :city, :state, :country, presence: true
+
+    #Geocoder macro and validator for google maps 
+    before_save :set_address
+    geocoded_by :address
+    before_save :geocode
+
+    def set_address
+      self.address = [street, street_number, zipcode, city, state, country].join(',')
+    end
 end

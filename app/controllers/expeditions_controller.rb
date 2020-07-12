@@ -34,7 +34,7 @@ class ExpeditionsController < ApplicationController
     private
 
     def expedition_params
-        params.require(:expedition).permit(:location_name, :date_and_time, :latitude, :longitude, :description, harvests_attributes: [:amount, :item_id, item_attributes: [:name, :description]])
+        params.require(:expedition).permit(:location_name, :date_and_time, :street_number, :street, :city, :state, :country, :zipcode, :latitude, :longitude, :description, harvests_attributes: [:amount, :item_id, item_attributes: [:name, :description]])
     end
 
     def set_expedition
