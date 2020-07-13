@@ -9,7 +9,7 @@ class Expedition < ApplicationRecord
     #Geocoder macro and validator for google maps 
     before_save :set_address
     geocoded_by :address
-    before_save :geocode
+    before_create :geocode
 
     def set_address
       self.address = [street, street_number, zipcode, city, state, country].join(',')
