@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :expeditions do
       resources :harvests
     end
+    #get "/users/:user_id/items/sort_by_name", to: "items#sort_by_name"
     resources :items do
       resources :harvests
     end
