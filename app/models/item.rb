@@ -4,4 +4,6 @@ class Item < ApplicationRecord
     
     validates :name, :description, presence: true
     validates :name, uniqueness: true
+
+    #user.harvests.map(&:item).uniq
 end

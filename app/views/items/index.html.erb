@@ -1,0 +1,8 @@
+<h1>Here's all your item's by date harvested!</h1>
+<% @user.dated_harvests.each do |harvests| %>
+<ul>
+    <% harvests.each do |harvest| %>
+        <li><%= harvest.expedition.date_and_time %> <%= harvest.item.name %> - <%= harvest.amount %></li>
+    <% end %>
+    </ul>
+<% end %>
