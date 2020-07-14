@@ -16,9 +16,4 @@ class Expedition < ApplicationRecord
     def set_address
       self.address = [street, street_number, zipcode, city, state, country].join(',')
     end
-
-    #def location_harvests
-    #  self.expeditions.group(:location_name).collect(&:harvests)
-   #end
-
 end

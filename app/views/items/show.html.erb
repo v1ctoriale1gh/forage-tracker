@@ -1,0 +1,7 @@
+<%= @item.name %>
+<%= @item.description %>
+<ul>
+<% @item.harvests.each do |harvest| %>
+  <li><%= harvest.expedition.location_name %> - <%= harvest.amount %> </li>
+<% end %>
+</ul>

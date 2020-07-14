@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
-    before_action :set_user
+    before_action :set_user, except: [:show]
     def show
+        byebug
+        @item = Item.find(params[:id])
     end
 
     def index
