@@ -1,0 +1,8 @@
+<h1>Here's all your item's by location harvested!</h1>
+<% @user.location_harvests.each do |harvests| %>
+<ul>
+    <% harvests.each do |harvest| %>
+        <li><%= harvest.expedition.location_name %> - <%= harvest.item.name %> - <%= harvest.amount %></li>
+    <% end %>
+    </ul>
+<% end %>

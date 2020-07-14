@@ -11,14 +11,14 @@ class ExpeditionsController < ApplicationController
 
     def new
         @expedition = Expedition.new
-          5.times do
-              @expedition.harvests.build
-              @expedition.items.build
-          end
+        5.times do
+            @expedition.harvests.build
+            @expedition.items.build
+        end
     end
 
     def create
-        byebug
+        #byebug
         @expedition = Expedition.new(expedition_params)
         @expedition.user = @user
         render_or_redirect(:new)
@@ -54,4 +54,5 @@ class ExpeditionsController < ApplicationController
         render page
       end
     end
+
 end

@@ -6,6 +6,8 @@ class Expedition < ApplicationRecord
 
     validates :location_name, :street, :street_number, :zipcode, :city, :state, :country, presence: true
 
+    scope :location_group, -> { order("location_name")}
+
     #Geocoder macro and validator for google maps 
     before_save :set_address
     geocoded_by :address
@@ -14,4 +16,9 @@ class Expedition < ApplicationRecord
     def set_address
       self.address = [street, street_number, zipcode, city, state, country].join(',')
     end
+
+    #def location_harvests
+    #  self.expeditions.group(:location_name).collect(&:harvests)
+   #end
+
 end
