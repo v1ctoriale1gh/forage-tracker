@@ -1,5 +1,8 @@
-<%= @item.name %>
-<%= @item.description %>
+<h1><%= @item.name %></h1>
+<h2><%= @item.description %></h2>
+
+<h3>Locations (and amounts) where <%= @item.name %> has been found:</h3>
+
 <ul>
 <% @item.harvests.each do |harvest| %>
   <li><%= harvest.expedition.location_name %> - <%= harvest.amount %> </li>

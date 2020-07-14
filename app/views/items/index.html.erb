@@ -2,7 +2,7 @@
 <% @user.dated_harvests.each do |harvests| %>
 <ul>
     <% harvests.each do |harvest| %>
-        <li><%= harvest.expedition.date_and_time %> <%= harvest.item.name %> - <%= harvest.amount %></li>
+        <li><%= harvest.expedition.date_and_time %> <%= harvest.item.name %> - <%= harvest.amount %> <%= link_to "View Item", item_path(harvest.item_id) %> </li>
     <% end %>
     </ul>
 <% end %>

@@ -2,7 +2,7 @@
 Here's all your expeditions
 <ul>
 <% @user.expeditions.each do |exp| %>
-<li><%= exp.location_name %> <%= exp.date_and_time %></li>
+<li><%= exp.location_name %> <%= exp.date_and_time %> <%= link_to "View Expedition", user_expedition_path(@user) %></li>
 <% end %>
 </ul>
 Add a new Expedition!

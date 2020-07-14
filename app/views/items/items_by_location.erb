@@ -2,7 +2,8 @@
 <% @user.location_harvests.each do |harvests| %>
 <ul>
     <% harvests.each do |harvest| %>
-        <li><%= harvest.expedition.location_name %> - <%= harvest.item.name %> - <%= harvest.amount %></li>
+        <li><%= harvest.expedition.location_name %> - <%= harvest.item.name %> - <%= harvest.amount %> <%= link_to "View Item", item_path(harvest.item_id) %></li>
     <% end %>
     </ul>
 <% end %>
+<%# user.expeditions.where("LOCATION_NAME LIKE ?", "Test").collect(&:harvests) %>
