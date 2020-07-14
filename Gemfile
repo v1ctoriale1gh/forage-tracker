@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
  #Gem for turning address into coordinates
  gem 'geocoder'
  gem 'awesome_print'
+ gem 'omniauth-google-oauth2'
+ gem 'dotenv-rails'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
