@@ -18,7 +18,7 @@ class User < ApplicationRecord
     end
 
     def self.find_or_create_by_omniauth(auth_hash)
-      byebug
+      #byebug
         #If the user is already in the db
         if self.find_by(email: auth_hash['info']['email']) 
             #return the user
@@ -29,7 +29,7 @@ class User < ApplicationRecord
             #create and return new user
             password = SecureRandom.hex
             @user = self.create(email: auth_hash['info']['email'], username: username, name: name, password: password)
-            byebug
+            #byebug
         end
         @user
     end
