@@ -13,12 +13,12 @@ class ExpeditionsController < ApplicationController
     end
 
     def new
-        allowed_user(@user, :new)
         @expedition = Expedition.new
         5.times do
             @expedition.harvests.build
             @expedition.items.build
         end
+        allowed_user(@user, :new)
     end
 
     def create
