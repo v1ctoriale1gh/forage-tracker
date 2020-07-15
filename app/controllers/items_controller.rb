@@ -6,14 +6,17 @@ class ItemsController < ApplicationController
 
     def index
         require_login
+        allowed_user(@user, :index)
     end
 
     def items_by_location
         require_login
+        allowed_user(@user, :items_by_location)
     end
 
     def items_by_name
         require_login
+        allowed_user(@user, :items_by_name)
     end
 
     private

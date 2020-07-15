@@ -1,13 +1,12 @@
 class ApplicationController < ActionController::Base
-    protect_from_forgery
-    helper_method :current_user, :logged_in?, :require_login
+    helper_method :logged_in?, :require_login, :current_user, :allowed_user
     
     def current_user
-        @current_user||= User.find_by(:id => session[:user_id]) if !!session[:user_id] 
-      end
+      @current_user||= User.find_by(:id => session[:user_id]) #if !!session[:user_id] 
+    end
 
       def logged_in?
-        byebug
+        #byebug
         !!session[:user_id]
       end
 
@@ -18,6 +17,17 @@ class ApplicationController < ActionController::Base
             redirect_to "/login"
         end
     end
+
+    def allowed_user(params_user, page)
+     if current_user == params_user
+      #byebug
+        render page
+     else 
+        flash[:error] = "Oops! Access Denied"
+        redirect_to '/login'
+      end
+    end
+
    private
    def user_params
        params.require(:user).permit(:username, :name, :password, :email)

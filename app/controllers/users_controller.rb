@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+    skip_before_action :verify_authenticity_token
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def show
         require_login
+        allowed_user(@user, :show)
         @user = User.find_by(id: params[:id])
     end
 
@@ -39,7 +41,7 @@ class UsersController < ApplicationController
     def render_or_redirect(page)
         if @user.persisted?
             session[:user_id] = @user.id
-            byebug
+            #byebug
             redirect_to user_path(@user)
           else
             render page

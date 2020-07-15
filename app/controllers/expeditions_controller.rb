@@ -4,13 +4,16 @@ class ExpeditionsController < ApplicationController
     before_action :set_user
 
     def show
+        allowed_user(@user, :show)
     end
 
     def index
+        allowed_user(@user, :index)
         redirect_to user_path(@user)
     end
 
     def new
+        allowed_user(@user, :new)
         @expedition = Expedition.new
         5.times do
             @expedition.harvests.build
@@ -26,6 +29,7 @@ class ExpeditionsController < ApplicationController
     end
 
     def edit
+        allowed_user(@user, :edit)
     end
 
     def update
