@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     def create
         if !!( auth_hash = auth )
           @user = User.find_or_create_by_omniauth(auth_hash)
-          if @user.persisted? then session[:user_id] = @user.id
+          if @user.persisted? then session[:User_id] = @user.id
           else render :new and return
           end
         else
@@ -35,7 +35,9 @@ class SessionsController < ApplicationController
       def credentials
         { username: user_params[:username] }
       end
-end
 
-###117812901148-fro6lt9mbcmmi2f2lci9j8ic7vc82ie0.apps.googleusercontent.com
-###_DuUYYnjuWfsPla4LtYGpwC7
+      def reset_session
+        session.delete(:User_id)
+      end
+
+end

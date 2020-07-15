@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root "sessions#new"
   resources :users do
     get "items_by_location", to: "items#items_by_location"
     get "items_by_name", to: "items#items_by_name"
