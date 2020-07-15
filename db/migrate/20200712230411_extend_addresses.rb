@@ -6,6 +6,5 @@ class ExtendAddresses < ActiveRecord::Migration[6.0]
     add_column :expeditions, :street, :string
     add_column :expeditions, :street_number, :string
     add_column :expeditions, :zipcode, :string
-    add_column :expeditions, :address, :string
   end
 end
