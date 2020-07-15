@@ -10,3 +10,10 @@ Add a new Expedition!
 <%= link_to "New Expedition", new_user_expedition_path(@user) %>
 
 <a><%= link_to("Sign out", logout_path, :method => :delete) %></a>
+
+<br>
+<br>
+<br>
+<%= link_to "View Items by Location",  user_items_by_location_path(@user) %><br>
+<%= link_to "View Items by Name",  user_items_by_name_path(@user) %><br>
+<%= link_to "View Items by Date", user_items_path(@user) %><br>
