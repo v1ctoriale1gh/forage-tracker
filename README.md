@@ -1,7 +1,5 @@
 # README
 
-# README
-
 ## Description
 
 This application is a place for people to track flora/fauna/and otherwise that they collect while foraging.  Create an account and log your expeditions, Items, and harvests.
