@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# README
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+This application is a place for people to track flora/fauna/and otherwise that they collect while foraging.  Create an account and log your expeditions, Items, and harvests.
 
-* System dependencies
+## Setting Up
 
-* Configuration
+First download or clone this repository.
 
-* Database creation
+Then run
+```
+bundle install
+```
+Next, run
+```
+rake db:create
+rake db:migrate
+```
 
-* Database initialization
+Next, run
+```
+rails s
+```
 
-* How to run the test suite
+Then open up your local server in your favorite browser.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Contributor's Guide
 
-* Deployment instructions
+Bug reports and pull requests are welcome on GitHub.
 
-* ...
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
