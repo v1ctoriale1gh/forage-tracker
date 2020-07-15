@@ -16,9 +16,7 @@ Rails.application.routes.draw do
   resources :items, only: [:show]
 
   get    '/login'                => 'sessions#new'
-  #get '/google_signup', to: redirect('/auth/google_oauth2'), as: 'google_signup'
   get '/auth/:provider/callback', to: 'sessions#create'
-  #post   '/sessions'             => 'sessions#create'
   delete '/logout'               => 'sessions#destroy'
 
 
