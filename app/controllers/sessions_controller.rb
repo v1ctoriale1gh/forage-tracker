@@ -4,18 +4,20 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if !!( auth_hash = auth )
+        if auth_hash ||= auth
           @user = User.find_or_create_by_omniauth(auth_hash)
-          if @user.persisted? then session[:User_id] = @user.id
-          else render :new and return
+          if @user.save
+            session[:user_id] = @user.id
+          else 
+            render :new
           end
         else
           @user = User.find_by(credentials)
-          if ( !!@user && @user.authenticate(user_params[:password]) )
-            session[:user_id] = @user.id
+          if !!@user && @user.authenticate(user_params[:password])
+              session[:user_id] = @user.id
           else
-            @user = User.new.tap{|u| u.errors.add(:username, "or password is invalid")}
-            render :new and return
+            @user = User.new.tap{|u| u.errors.add(:email, "or password is invalid")}
+            render :new
           end
         end
         redirect_to user_path(current_user)
@@ -33,11 +35,11 @@ class SessionsController < ApplicationController
       end
 
       def credentials
-        { username: user_params[:username] }
+       { email: user_params[:email] }
       end
 
       def reset_session
-        session.delete(:User_id)
+        session.delete(:user_id)
       end
 
 end
