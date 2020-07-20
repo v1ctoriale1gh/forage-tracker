@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   root "sessions#new"
+  
+  get    '/login', to: 'sessions#new'
+  get '/auth/:provider/callback', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   resources :users do
     get "items_by_location", to: "items#items_by_location"
     get "items_by_name", to: "items#items_by_name"
@@ -15,9 +20,7 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show]
 
-  get    '/login'                => 'sessions#new'
-  get '/auth/:provider/callback', to: 'sessions#create'
-  delete '/logout'               => 'sessions#destroy'
+
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
