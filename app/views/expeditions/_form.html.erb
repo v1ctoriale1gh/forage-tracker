@@ -25,7 +25,7 @@
   <%= f.fields_for :harvests, expedition.harvests.build do |harvest_fields| %>
   <%= harvest_fields.collection_select :item_id, Item.all, :id, :name, prompt: "Select an Existing Item" %>
   <p> Or Create a new Item </p>
-  <%= harvest_fields.fields_for :item, expedition.items.build do |item_fields| %>
+  <%= harvest_fields.fields_for :item, diff_for_new_n_edit do |item_fields| %>
     <%= item_fields.label :name %>
     <%= item_fields.text_field :name %>
     <%= item_fields.label :description%>
