@@ -2,6 +2,16 @@ class UsersController < ApplicationController
     skip_before_action :verify_authenticity_token
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+    def index
+        if !!params[:search]
+            byebug
+        @users = User.where("name like ?", params[:search])
+        else
+            byebug
+        @users = User.all
+        end
+    end
+
     def show
         require_login
         allowed_user(@user, :show)
@@ -32,6 +42,10 @@ class UsersController < ApplicationController
     end
 
     private
+
+    def user_params
+        params.require(:user).permit(:username, :name, :password, :email)
+    end
 
 
     def set_user

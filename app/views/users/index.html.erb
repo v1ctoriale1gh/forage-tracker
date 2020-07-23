@@ -1,0 +1,9 @@
+<%= form_tag('/users', method: 'get') do %>
+<%= text_field_tag :search %>
+<%= submit_tag 'submit' %>
+<% end %>
+
+
+<% @users.each do |user| %>
+<%= user.name %><br>
+<% end %>
