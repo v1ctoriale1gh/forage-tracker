@@ -1,14 +1,13 @@
 <h1><%= @expedition.location_name.capitalize %> <%= @expedition.date_and_time %></h1>
 <br>
-<p><%= @expedition.description %></p>
-
-
 <iframe width="300" height="300" frameborder="0" style="border:0"
  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBD8Xk5R3O8TSo1NRwszakziTY2LQ59LBE&q=<%= @expedition.latitude %>,<%= @expedition.longitude %>"
  allowfullscreen>
-</iframe>
-
-
+</iframe><br>
+<p><%= @expedition.description %></p>
+<img src="<%= @expedition.picture %>" alt="picture of expedition" width="500" height="600">
+<br>
+<br>
 <h3>Harvests:</h3>
 <ol><% @expedition.harvests.each do |harvest| %>
     <li><%= harvest.item.name %> <%= harvest.amount %></li>

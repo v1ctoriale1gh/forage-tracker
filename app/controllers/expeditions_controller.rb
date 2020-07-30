@@ -5,6 +5,7 @@ class ExpeditionsController < ApplicationController
 
     def show
         allowed_user(@user, :show)
+        #byebug
     end
 
     def index
@@ -25,6 +26,7 @@ class ExpeditionsController < ApplicationController
         #byebug
         @expedition = Expedition.new(expedition_params)
         @expedition.user = @user
+        #byebug
         render_or_redirect(:new)
     end
 
@@ -40,7 +42,7 @@ class ExpeditionsController < ApplicationController
     private
 
     def expedition_params
-        params.require(:expedition).permit(:location_name, :date_and_time, :street_number, :street, :city, :state, :country, :zipcode, :latitude, :longitude, :description, harvests_attributes: [:amount, :item_id, item_attributes: [:name, :description]])
+        params.require(:expedition).permit(:location_name, :date_and_time, :street_number, :street, :city, :state, :country, :zipcode, :latitude, :longitude, :description, :picture, harvests_attributes: [:amount, :item_id, item_attributes: [:name, :description]])
     end
 
     def set_expedition
