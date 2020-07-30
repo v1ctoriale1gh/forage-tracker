@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     end
 
     def items_by_location
-        byebug
+        #byebug
         require_login
         allowed_user(@user, :items_by_location)
     end
