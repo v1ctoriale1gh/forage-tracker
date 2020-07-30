@@ -97,7 +97,7 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
-    i18n (1.8.3)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
@@ -152,11 +152,12 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
-    paperclip (4.1.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
+    paperclip (5.2.0)
+      activemodel (>= 4.2.0)
+      activesupport (>= 4.2.0)
+      cocaine (~> 0.5.5)
       mime-types
+      mimemagic (~> 0.3.0)
     pg (1.2.3)
     pg (1.2.3-x64-mingw32)
     pg (1.2.3-x86-mingw32)
@@ -259,7 +260,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.3.1)
+    zeitwerk (2.4.0)
 
 PLATFORMS
   java
@@ -279,7 +280,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   omniauth-google-oauth2
-  paperclip (~> 4.1.1)
+  paperclip (~> 5.2.0)
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
