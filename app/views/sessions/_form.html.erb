@@ -3,13 +3,11 @@
 <% if flash[:error] %>
 <%= flash[:error] %>
 <% end %>
-    <%= form_for(@user) do |f| %>
-      <%= f.label :username, "Email" %>
-      <%= f.text_field :username %>
-      <%= f.label :password, "Password" %>
-      <%= f.password_field :password %><br>
-      <%= f.submit "Log in" %><br><br>
-    <% end %>
+  <%=  form_with url: "/login", method: :post do |f|%>
+    <%= f.email_field :email, label: "Email:" %>
+    <%= f.password_field :password, label: "Password:" %>
+    <%= f.submit "Log In" %>
+  <% end %>
 
     <%= button_to "Log in or Sign up with Google", "/auth/google_oauth2" %><br><br>
       <%= link_to "Sign up",  new_user_path %>

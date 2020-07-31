@@ -13,13 +13,15 @@ class SessionsController < ApplicationController
           end
         else
           @user = User.find_by(credentials)
-          if !!@user && @user.authenticate(user_params[:password])
+          if !!@user && @user.authenticate(params[:password])
               session[:user_id] = @user.id
           else
+            byebug
             @user = User.new.tap{|u| u.errors.add(:email, "or password is invalid")}
             render :new
           end
         end
+        byebug
         redirect_to user_path(current_user)
       end
 
@@ -35,7 +37,7 @@ class SessionsController < ApplicationController
       end
 
       def credentials
-       { email: user_params[:email] }
+       { email: params[:email] }
       end
 
       def reset_session
