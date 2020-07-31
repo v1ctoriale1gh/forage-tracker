@@ -16,12 +16,12 @@ class SessionsController < ApplicationController
           if !!@user && @user.authenticate(params[:password])
               session[:user_id] = @user.id
           else
-            byebug
+            #byebug
             @user = User.new.tap{|u| u.errors.add(:email, "or password is invalid")}
             render :new
           end
         end
-        byebug
+        #byebug
         redirect_to user_path(current_user)
       end
 
