@@ -1,19 +1,28 @@
-<h3><%= @user.name %>,
-Here's all your expeditions</h3>
-<ul>
+<% if @user.expeditions.length > 0 %>
+  <h3><%= @user.name %>,
+  Here's all your expeditions!</h3>
+  <ul>
 <% @user.expeditions.each do |exp| %>
-<li><%= exp.location_name %> <%= exp.date_and_time %> <%= link_to "View Expedition", user_expedition_path(@user, exp) %></li>
+  <li><%= exp.location_name %> <%= exp.date_and_time %> <%= link_to "View Expedition", user_expedition_path(@user, exp) %></li>
 <% end %>
-</ul>
+  </ul>
+<% else %>
+  <h3>Hello <%= @user.name %>!</h3>
+  <p>You haven't added any expeditions! Please add an expedition for more functionality!</p>
+<% end %>
 Add a new Expedition!
 <br>
 <%= link_to "New Expedition", new_user_expedition_path(@user) %>
 
-<a><%= link_to("Sign out", logout_path, :method => :delete) %></a>
+<br>
+<br>
+<br>
+<p> To See Items you have harvested grouped by their locations: (Are you going somehwere specific again?) </p>
+<%= link_to "View Items by Location",  user_items_by_location_path(@user) %><br>
+<p> To see items you have harvested grouped by their name: (Are you looking to harvest a specific item again?)</p>
+<%= link_to "View Items by Name",  user_items_by_name_path(@user) %><br>
+<p> To see items you have harvested grouped by their name: (Are you looking to to see what you can harvest at a certain time of year?) </p>
+<%= link_to "View Items by Date", user_items_path(@user) %><br>
 
 <br>
-<br>
-<br>
-<%= link_to "View Items by Location",  user_items_by_location_path(@user) %><br>
-<%= link_to "View Items by Name",  user_items_by_name_path(@user) %><br>
-<%= link_to "View Items by Date", user_items_path(@user) %><br>
+<a><%= link_to("Sign out", logout_path, :method => :delete) %></a>

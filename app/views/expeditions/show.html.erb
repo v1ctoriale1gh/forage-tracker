@@ -13,5 +13,7 @@
     <li><%= harvest.item.name %> <%= harvest.amount %></li>
     <% end %>
 </ol>
+<p>Edit this expedition here: </p>
 <%= link_to "Edit", edit_user_expedition_path(@user)%>
+<p> Return to view all of you expeditions here: </p>
 <%= link_to "All Expeditions", user_path(@expedition.user) %>

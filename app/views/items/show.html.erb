@@ -1,5 +1,7 @@
 <h1><%= @item.name %></h1>
 <h2><%= @item.description %></h2>
+<p> This page shows all of the <%= @item.name %>'s' harvests, made not only by you but by all users of the forage tracker!<br>
+Use this information to explore new places to harvest <%= @item.name %>!</p>
 
 <h3>Locations (and amounts) where <%= @item.name %> has been found:</h3>
 
@@ -8,3 +10,6 @@
   <li><%= harvest.expedition.location_name %> - <%= harvest.amount %> </li>
 <% end %>
 </ul>
+
+<p> Return to view all of you expeditions here: </p>
+<%= link_to "All Expeditions", user_path(current_user) %>

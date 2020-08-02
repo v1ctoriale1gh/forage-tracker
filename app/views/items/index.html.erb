@@ -1,4 +1,5 @@
 <h1>Here's all your item's by date harvested!</h1>
+<p> The link next to each item contains more information about that item</p>
 <% @user.dated_harvests.each do |harvests| %>
 <ul>
     <% harvests.each do |harvest| %>
@@ -6,3 +7,4 @@
     <% end %>
     </ul>
 <% end %>
+<%= link_to "All Expeditions", user_path(@user) %>

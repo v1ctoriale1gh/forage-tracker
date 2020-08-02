@@ -1,6 +1,10 @@
 <h1>Here are the items you've found.</h1>
+<p> The link next to each item contains more information about that item</p>
 <ul>
 <% @user.found_items.each do |item| %>
 <li><%= item.name %> <%= link_to item.name, item_path(item) %></li>
 <% end %>
 </ul>
+
+<p> Return to view all of you expeditions here: </p>
+<%= link_to "All Expeditions", user_path(@user) %>

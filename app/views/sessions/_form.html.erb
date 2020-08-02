@@ -1,14 +1,19 @@
-</div><br>
+
+<h1> Welcome to the Forage-Tracker!</h1>
+<h3> Log in or sign up to track you expeditons and items you have harvested! </h3>
+<p>(Please bear with us, we promise we will be prettier soon!!)</p>
 <%= render "/layouts/error", object: @user %>
 <% if flash[:error] %>
 <%= flash[:error] %>
 <% end %>
   <%=  form_with url: "/login", method: :post do |f|%>
-    <%= f.email_field :email, label: "Email:" %>
-    <%= f.password_field :password, label: "Password:" %>
-    <%= f.submit "Log In" %>
+    <%= f.label :email %>
+    <%= f.email_field :email %><br>
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
+    <%= f.submit "Log In" %><br>
   <% end %>
+<br>
+    <%= button_to "Log in or Sign up with Google", "/auth/google_oauth2" %><br>
 
-    <%= button_to "Log in or Sign up with Google", "/auth/google_oauth2" %><br><br>
-      <%= link_to "Sign up",  new_user_path %>
-  </div>
+    <%= link_to "Sign up",  new_user_path %>
